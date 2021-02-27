@@ -4,20 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t quigleyniall/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t quiglen3/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true quigleyniall/react-test npm test -- --coverage
+  - docker run -e CI=true quiglen3/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t quigleyniall/docker-complex--worker ./worker
-  - docker build -t quigleyniall/docker-complex--server ./server
-  - docker build -t quigleyniall/docker-complex--nginx ./nginx
-  - docker build -t quigleyniall/docker-complex--client ./client
+  - docker build -t quiglen3/docker-complex--worker ./worker
+  - docker build -t quiglen3/docker-complex--server ./server
+  - docker build -t quiglen3/docker-complex--nginx ./nginx
+  - docker build -t quiglen3/docker-complex--client ./client
 
   - echo "$docker_pwd" | docker login -u "$docker_id" --password-stdin
 
-  - docker push quigleyniall/docker-complex--worker
-  - docker push quigleyniall/docker-complex--server
-  - docker push quigleyniall/docker-complex--nginx
-  - docker push quigleyniall/docker-complex--client
+  - docker push quiglen3/docker-complex--worker
+  - docker push quiglen3/docker-complex--server
+  - docker push quiglen3/docker-complex--nginx
+  - docker push quiglen3/docker-complex--client
