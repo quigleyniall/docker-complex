@@ -15,6 +15,7 @@ after_success:
   - docker build -t quiglen3/docker-complex--nginx ./nginx
   - docker build -t quiglen3/docker-complex--client ./client
 
+  - docker logout
   - echo "$docker_pwd" | docker login -u "$docker_id" --password-stdin
 
   - docker push quiglen3/docker-complex--worker
